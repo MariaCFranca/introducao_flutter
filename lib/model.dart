@@ -5,15 +5,34 @@ class Pessoa {
   String? nome;
   String? cpf;
   DateTime? nascimento;
-  int? idade;
   Sexo? sexo;
-  double? salario;
-  bool? programador;
+
+  int? getIdade(){
+
+    if(nascimento == null){
+      return null;
+    }
+
+    final dataAtual = DateTime.now();
+    final idade = dataAtual.difference(nascimento!);
+
+    return idade.inDays ~/ 365;
+  }
 
   @override
   String toString() {
-    return "{Nome: '$nome'. CPF: '$cpf'. Nascimento: '$nascimento'. Idade: '$idade'. Sexo: '$sexo'. Salário: '$salario'. Programador: '$programador'.}";
+    return "{Nome: '$nome'. CPF: '$cpf'. Nascimento: '$nascimento'. Idade: '${getIdade()}'. Sexo: '$sexo'}";
   }
+}
+
+class Programador extends Pessoa{
+  double? salario;
+
+  @override
+  String toString() {
+    return "{Nome: '$nome'. CPF: '$cpf'. Nascimento: '$nascimento'. Idade: '${getIdade()}'. Sexo: '$sexo'. Salário: '$salario'.}";
+  }
+
 }
 
 void mainEntidades(){
@@ -22,21 +41,16 @@ void mainEntidades(){
   pessoa.nome = "Maria Clara Franca";
   pessoa.cpf = "127.512.529-80";
   pessoa.nascimento = DateTime(2002, 7, 1);
-  pessoa.idade = 19;
   pessoa.sexo = Sexo.FEMININO;
-  pessoa.salario = 10000.00;
-  pessoa.programador = true;
 
-  Pessoa pessoa2 = Pessoa();
+  Programador prog = Programador();
 
-  pessoa2.nome = "Ana Rita Franca";
-  pessoa2.cpf = "123.456.789-10";
-  pessoa2.nascimento = DateTime(2005, 6, 17);
-  pessoa2.idade = 16;
-  pessoa2.sexo = Sexo.FEMININO;
-  pessoa2.salario = 6000.00;
-  pessoa2.programador = false;
+  prog.nome = "Ana Rita Franca";
+  prog.cpf = "123.456.789-10";
+  prog.nascimento = DateTime(2005, 6, 17);
+  prog.sexo = Sexo.FEMININO;
+  prog.salario = 10000.00;
 
-  print(pessoa);
-  print(pessoa2);
+  print(pessoa.toString());
+  print(prog.toString());
 }
