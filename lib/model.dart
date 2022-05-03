@@ -70,14 +70,26 @@ class Programador extends Pessoa{
 
 void mainEntidades(){
 
-  final map = {
-    'nome': 'Maria',
-    'nascimento': '2002-07-01',
-    'sexo': 'F',
-    'salario': '10000.0'
-  };
+  // final map = {
+  //   'nome': 'Maria',
+  //   'nascimento': '2002-07-01',
+  //   'sexo': 'F',
+  //   'salario': '10000.0'
+  // };
+  //
+  // Pessoa pessoa = Programador.fromMap(map);
 
-  Pessoa pessoa = Programador.fromMap(map);
+  List<String> nomes = ['Carlos', 'Joao', 'Samuel', 'Jose', 'Eduardo'];
+
+  // FOR tradicional estilo Java/PHP
+  for(int i = 0; i < nomes.length; i++){
+    if(nomes[i].toUpperCase().startsWith('S')){
+      // continue; // não executa o que está embaixo e volta para o for.for
+      break; // sai do for sem executar mais nada
+    }
+
+    print("$i - ${nomes[i]}");
+  }
 
   // pessoa.nome = "Maria Clara Franca";
   // pessoa.cpf = "127.512.529-80";
@@ -92,6 +104,6 @@ void mainEntidades(){
   // prog.sexo = Sexo.FEMININO;
   // prog.salario = 10000.00;
 
-  print(pessoa.toString());
+ // print(pessoa.toString());
   // print(prog.toString());
 }
