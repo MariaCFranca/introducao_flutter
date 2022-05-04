@@ -90,7 +90,7 @@ class NotaFiscal {
   }
 
   bool possuiDesconto() {
-    return listaItens.any((i) => i.desconto > 0 ? true : false);
+    return listaItens.any((i) => i.desconto > 0);
   }
 
   List<ItemNF> ItensComDesconto(){
